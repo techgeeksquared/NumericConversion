@@ -1,0 +1,21 @@
+﻿@using NumericConversion
+@using NumericConversion.Models
+
+@model NumericConversion.Models.NumberConversionModel
+@{
+    ViewData["Title"] = "Numeric Conversion Project";
+}
+
+<h2>Numeric Conversion</h2>
+<p> Please enter a non-negative, decimal number that is less than 2 million. </p>
+@using (Html.BeginForm("NumericConverterLanding", "NumericConversion", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.number)
+
+    <button type="submit">Get Alphanumeric Conversion</button>
+    <br />
+    <h3>@ViewData["conversion_result"]</h3>
+    <h6 style="color:red">@Html.ValidationMessageFor(model => model.number)</h6>
+
+}
+

@@ -27,7 +27,7 @@ namespace NumericConversion
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -57,6 +57,13 @@ namespace NumericConversion
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "NumericConversionMap",
+                    template: "{controller=NumericConversion}/{action=NumericConverterLanding}/{id?}");
             });
         }
     }
