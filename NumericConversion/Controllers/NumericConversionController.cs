@@ -34,7 +34,7 @@ namespace NumericConversion.Controllers
             return View("NumericConversion");
         }
 
-        public string NumericConverter(NumberConversionModel num) //1520132.54
+        public string NumericConverter(NumberConversionModel num) //1520132.54 my base testing value. 
         { 
            return _conversionSettings.DecimalToWords(num.number);
         }
