@@ -30,21 +30,23 @@ namespace NumericConversion.Factories
                         if ((wholeNumber.Length > 0 && wholeNumber == "0") || (wholeNumber.Length == 0))
                         {
 
-                            isDollars = Helpers.Helpers.isCurrencyType(1);
+                            isDollars = Helpers.ConversionHelpers.isCurrencyType(1);
                             StringEnd = decimalnumbers.ToString() + "/100 " + isDollars;
                         }
                         else
                         {
-                            isDollars = Helpers.Helpers.isCurrencyType(1);
-                            isAnd = Helpers.Helpers.isAnd;
+                            isDollars = Helpers.ConversionHelpers.isCurrencyType(1);
+                            isAnd = Helpers.ConversionHelpers.isAnd;
                             StringEnd = isAnd + " " + decimalnumbers.ToString() + "/100 " + isDollars;
                         }
-                       // StringEnd = " and " + decimalnumbers.ToString() + "/100 Dollars";
                     }
                 }
-                val = String.Format("{0} {1}{2} {3}", Helpers.Helpers.ConvertWholeNumber(wholeNumber).Trim(), andString, decimalString, StringEnd);
+                val = String.Format("{0} {1}{2} {3}", Helpers.ConversionHelpers.ConvertWholeNumber(wholeNumber).Trim(), andString, decimalString, StringEnd);
             }
-            catch { }
+            catch {
+
+                //TODO: add better error checking. 
+            }
             return val;
         }
 

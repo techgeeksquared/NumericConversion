@@ -8,18 +8,31 @@ namespace NumericConversion_UnitTests.Models
     public class NumberConversionModelTests
     {
         [TestMethod]
-        public void DecimalToWords_StateUnderTest_ExpectedBehavior()
+        public void DecimalToWords_NegativeNumberTest_ReturnTwoSpaces()
         {
             // Arrange
             var numberConversionModel = new NumberConversionModel();
-            double number = 0;
-
+            double numberTest = -11;
+            string wordStringResult = "  ";
             // Act
-            var result = numberConversionModel.DecimalToWords(
-                number);
+            var result = numberConversionModel.DecimalToWords(numberTest);
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(wordStringResult, result);
+        }
+
+        [TestMethod]
+        public void DecimalToWords_PositiveDoubleTest_ReturnWordString()
+        {
+            // Arrange
+            var numberConversionModel = new NumberConversionModel();
+            double numberTest = 1000123.011;
+            string wordStringResult = "One Million and Thousand One Hundred Twenty Three  and 011/100 Dollars";
+            // Act
+            var result = numberConversionModel.DecimalToWords(numberTest);
+
+            // Assert
+            Assert.AreEqual(wordStringResult, result);
         }
     }
 }

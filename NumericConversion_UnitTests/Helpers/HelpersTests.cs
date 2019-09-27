@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NumericConversion.Helpers;
 using System;
@@ -7,47 +8,56 @@ namespace NumericConversion_UnitTests.Helpers
     [TestClass]
     public class HelpersTests
     {
-
-
         [TestInitialize]
         public void TestInitialize()
         {
 
         }
 
-        private Helpers CreateHelpers()
+        private ConversionHelpers CreateHelpers()
         {
-            return new Helpers();
+            return new ConversionHelpers();
         }
 
         [TestMethod]
-        public void isCurrencyType_StateUnderTest_ExpectedBehavior()
+        public void isCurrencyType_WhenTypeIsCents_ReturnsCentsString()
         {
             // Arrange
-            var helpers = this.CreateHelpers();
-            int type = 0;
-
+            int typeTest = 0;
+            string typeExpected = "Cents";
             // Act
-            var result = helpers.isCurrencyType(
-                type);
+            var result = ConversionHelpers.isCurrencyType(typeTest);
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(typeExpected, result);
         }
 
         [TestMethod]
-        public void ConvertWholeNumber_StateUnderTest_ExpectedBehavior()
+        public void ConvertWholeNumber_EmptyStringTest_ReturnsEmptyString()
         {
             // Arrange
             var helpers = this.CreateHelpers();
-            String Number = null;
-
+            string Number = "";
+            string stringExpected = "";
             // Act
-            var result = helpers.ConvertWholeNumber(
-                Number);
+            var result = ConversionHelpers.ConvertWholeNumber(Number);
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(stringExpected, result);
+        }
+
+        [TestMethod]
+        public void ConvertWholeNumber_PositiveIntNumberStringTest_ReturnsNumericIntString()
+        {
+            // Arrange
+            var helpers = this.CreateHelpers();
+            string Number = "101.25";
+            string stringExpected = "One Hundred One Thousand Hundred Twenty Five";
+            // Act
+            var result = ConversionHelpers.ConvertWholeNumber(Number);
+
+            // Assert
+            Assert.AreEqual(stringExpected, result);
         }
     }
 }

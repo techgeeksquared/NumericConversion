@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NumericConversion.Helpers
 {
-    public class Helpers
+    public class ConversionHelpers
     {
         public const string isAnd = "and";
 
@@ -214,8 +214,10 @@ namespace NumericConversion.Helpers
                     if (word.Trim().Equals(place.Trim())) word = "";
                 }
             }
-            catch { }
-            return word.Trim();
+            catch {
+                //TODO: add better error checking. 
+            }
+                return word.Trim();
         }
 
        

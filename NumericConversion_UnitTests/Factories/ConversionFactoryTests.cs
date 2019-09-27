@@ -20,19 +20,18 @@ namespace NumericConversion_UnitTests.Factories
             return new ConversionFactory();
         }
 
-        [TestMethod]
-        public void ConvertToText_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var factory = this.CreateFactory();
-            String inputNumber = null;
+        //[TestMethod]
+        //public void ConvertToText_StateUnderTest_ExpectedBehavior()
+        //{
+        //    // Arrange
+        //    var factory = this.CreateFactory();
+        //    String inputNumber = null;
 
-            // Act
-            var result = factory.ConvertToText(
-                inputNumber);
+        //    // Act
+        //    //var result = factory.ConvertToText( inputNumber);
 
-            // Assert
-            Assert.Fail();
-        }
+        //    // Assert
+        //    Assert.Fail();
+        //}
     }
 }
