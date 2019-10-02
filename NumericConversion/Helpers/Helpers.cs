@@ -136,18 +136,18 @@ namespace NumericConversion.Helpers
             return name;
         }
 
-        public static String ConvertWholeNumber(String Number)
+        public static String ConvertWholeNumber(String Number, bool beginsZero = false)
         {
             string word = "";
             try
             {
-                bool beginsZero = false; 
+                
                 bool isDone = false;
                 double dblAmt = (Convert.ToDouble(Number));
                
                 if (dblAmt > 0)
                 { 
-                    beginsZero = Number.StartsWith("0");
+                    //beginsZero = Number.StartsWith("0");
 
                     int numDigits = Number.Length;
                     int pos = 0;

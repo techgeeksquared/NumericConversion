@@ -11,23 +11,34 @@ namespace NumericConversion.Factories
     {
         public static String ConvertToText(String inputNumber)
         {
-            String val = "", wholeNumber = inputNumber, decimalnumbers = "", andString = "", decimalString = "";
+            String val = "", wholenumber = inputNumber, decimalnumbers = "", andString = "", decimalString = "";
             String StringEnd = "";
+            int decimalvalue = 0;
+            bool beginsZero = false;
             try
             {
                 int decimalPlace = inputNumber.IndexOf(".");
 
                 if (decimalPlace > 0)
                 {
-                    wholeNumber = inputNumber.Substring(0, decimalPlace);
-                    decimalnumbers = inputNumber.Substring(decimalPlace + 1);
+                    wholenumber = inputNumber.Substring(0, decimalPlace);
+                    double dblAmt = (Convert.ToDouble(wholenumber));
+
+                    if (dblAmt > 0)
+                    {
+                        beginsZero = wholenumber.StartsWith("0");
+                    }
+                        decimalnumbers = inputNumber.Substring(decimalPlace + 1);
+                    decimalvalue = Convert.ToInt32(decimalnumbers);
+
+                    decimalnumbers = Convert.ToString(decimalLengthCheck(decimalvalue));
 
                     if (Convert.ToInt32(decimalnumbers) > 0)
                     {
                         string isAnd = string.Empty;
                         string isDollars = string.Empty;
 
-                        if ((wholeNumber.Length > 0 && wholeNumber == "0") || (wholeNumber.Length == 0))
+                        if ((wholenumber.Length > 0 && wholenumber == "0") || (wholenumber.Length == 0))
                         {
 
                             isDollars = Helpers.ConversionHelpers.isCurrencyType(1);
@@ -41,14 +52,28 @@ namespace NumericConversion.Factories
                         }
                     }
                 }
-                val = String.Format("{0} {1}{2} {3}", Helpers.ConversionHelpers.ConvertWholeNumber(wholeNumber).Trim(), andString, decimalString, StringEnd);
+                val = String.Format("{0} {1}{2} {3}", Helpers.ConversionHelpers.ConvertWholeNumber(wholenumber).Trim(), andString, decimalString, StringEnd);
             }
-            catch {
+            catch
+            {
 
                 //TODO: add better error checking. 
             }
             return val;
         }
 
+        private static int decimalLengthCheck(int decimalvalue)
+        {
+            int decimallength = Convert.ToString(decimalvalue).Length, _decimalvalue = decimalvalue;
+
+            switch (decimallength)
+            {
+                case 1:
+                    _decimalvalue = decimalvalue * 10;
+                    return _decimalvalue;
+                default:
+                    return _decimalvalue;
+            }
+        }
     }
 }
